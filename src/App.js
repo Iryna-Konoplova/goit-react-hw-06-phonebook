@@ -1,9 +1,9 @@
 // Модули
-import { useState } from "react";
-import shortid from 'shortid';
-import useLocalStorage from './hooks/useLocalStorage';
-import { useDispatch } from "react-redux";
-import contactsAction from "./redux/contacts/contacts-action";
+// import { useState } from "react";
+// import shortid from 'shortid';
+// import useLocalStorage from './hooks/useLocalStorage';
+// import { useDispatch } from "react-redux";
+// import contactsAction from "./redux/contacts/contacts-action";
 
 // Компоненты
 import ContactForm from './components/ContactForm';
@@ -23,43 +23,16 @@ import styles from './App.module.css';
 
 
 const App = () => {
-
   // const [contacts, setContacts] = useLocalStorage('contacts', defaultContacts);
   // const [filter, setFilter] = useState('');
-
-  // const formSubmitHandler = ({ name, number }) => {
-  //   setContacts(prevState => [...prevState, { id: shortid.generate(), name, number }]);
-  // };
-
-  // const changeFilter = e => {
-  //   setFilter(e.currentTarget.value);
-  // };
-
-  // const visibleContacts = () => {
-
-  //   const normalizedFilter = filter.toLowerCase();
-
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter),
-  //   );
-  // };
-
-  // const deleteContact = contactId => {
-  //   setContacts(prevState => prevState.filter(contact => contact.id !== contactId));
-  // };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Phonebook</h1>
       <ContactForm  />
-
       <h2 className={styles.subtitle}>Contacts</h2>
-      {/* <Filter value={filter} onChange={changeFilter} /> */}
-      {/* <ContactList
-        // contacts={visibleContacts()}
-        // onChange={changeFilter}
-        // onDeletContact={deleteContact}
-      /> */}
+      <Filter />  
+      <ContactList />
     </div>
   );
 }

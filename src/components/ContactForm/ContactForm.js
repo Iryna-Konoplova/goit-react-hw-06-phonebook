@@ -1,15 +1,15 @@
 // Модули
 import { useState } from "react";
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from "react-redux";
 import contactsAction from "../../redux/contacts/contacts-action";
+import { getContacts } from '../../redux/contacts/contacts-selectors';
 
 // Стили
 import styles from '../ContactForm/ContactForm.module.css';
 
 
 export default function ContactForm() {
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch()
 
   const [name, setName] = useState('');
@@ -44,7 +44,6 @@ export default function ContactForm() {
       return;
     }
 
-    // onSubmit({ name, number });
     dispatch(contactsAction.addContact({name, number}))
 
     setName("");
@@ -86,11 +85,6 @@ export default function ContactForm() {
     </form>
   );
 }
-
-ContactForm.propTypes = {
-  contacts: PropTypes.array.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
 
 
 

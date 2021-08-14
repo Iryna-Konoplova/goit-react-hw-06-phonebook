@@ -1,11 +1,19 @@
 // Модули
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from "react-redux";
+import contactsAction from '../../redux/contacts/contacts-action';
+import { getFilter } from '../../redux/contacts/contacts-selectors';
 
 // Стили
 import styles from '../Filter/filter.module.css';
 
-const Filter = ({ value, onChange }) => {
+
+const Filter = () => {
+
+  const value = useSelector(getFilter);
+  const dispatch = useDispatch();
+  const onChange = e => dispatch(contactsAction.changeFilter(e.target.value))
+ 
   return (
     <label className={styles.filterLabel}>
       Find contacts by name
@@ -20,9 +28,40 @@ const Filter = ({ value, onChange }) => {
   );
 };
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 export default Filter;
+
+
+
+
+// // Модули
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import { useSelector, useDispatch } from "react-redux";
+
+// // Стили
+// import styles from '../Filter/filter.module.css';
+
+// const Filter = ({ value, onChange }) => {
+  
+//   return (
+//     <label className={styles.filterLabel}>
+//       Find contacts by name
+//       <input
+//         className={styles.filterInput}
+//         type="text"
+//         name="filter"
+//         value={value}
+//         onChange={onChange}
+//       />
+//     </label>
+//   );
+// };
+
+// Filter.propTypes = {
+//   value: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+// };
+
+// export default Filter;
+

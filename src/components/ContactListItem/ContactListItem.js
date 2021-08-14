@@ -1,26 +1,26 @@
 // Модули
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from "react-redux";
+// import {  useDispatch } from "react-redux";
 
 // Стили
 import styles from '../ContactListItem/contactListItem.module.css';
-import contactsAction from '../../redux/contacts/contacts-action';
+// import contactsAction from '../../redux/contacts/contacts-action';
 
-const ContactListItem = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const dispatch = useDispatch()
+const ContactListItem = ({ name, number, id, onDeletContact }) => {
+  // const contacts = useSelector(state => state.contacts.items);
+  // const dispatch = useDispatch()
 
   return (
   <li className={styles.contactListItem}>
     <p className={styles.contact}>
       {' '}
-      {contacts.name}: {contacts.number}
+      {name}: {number}
     </p>
     <button
       className={styles.buttonDelete}
       type="button"
-      onClick={() => dispatch(contactsAction.deleteContact(contacts.id))}
+      onClick={() => onDeletContact(id)}
     >
       Delete
     </button>
