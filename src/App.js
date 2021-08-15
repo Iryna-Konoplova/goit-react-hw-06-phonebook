@@ -1,10 +1,3 @@
-// Модули
-// import { useState } from "react";
-// import shortid from 'shortid';
-// import useLocalStorage from './hooks/useLocalStorage';
-// import { useDispatch } from "react-redux";
-// import contactsAction from "./redux/contacts/contacts-action";
-
 // Компоненты
 import ContactForm from './components/ContactForm';
 import ContactList from './components/ContactList';
@@ -23,9 +16,6 @@ import styles from './App.module.css';
 
 
 const App = () => {
-  // const [contacts, setContacts] = useLocalStorage('contacts', defaultContacts);
-  // const [filter, setFilter] = useState('');
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Phonebook</h1>

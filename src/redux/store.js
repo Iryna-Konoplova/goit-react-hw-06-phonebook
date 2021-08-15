@@ -1,22 +1,47 @@
+// Модули
 import { configureStore } from '@reduxjs/toolkit';
-import contactsReducers from './contacts/contacts-reduser';
-// import { persistStore, persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
+import logger from 'redux-logger';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-// const persistConfig = {
-//   key: 'hello',
-//   storage,
-// }
+// Компоненты
+import contactsReducers from './contacts/contacts-reduser';
+
+
+const middleware = (getDefaultMiddleware) => getDefaultMiddleware({
+  serializableCheck: {
+    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  },
+}).concat(logger);
+
+const contactsPersistConfig = {
+  key: 'contacts',
+  storage,
+  blacklist: ['filter'],
+};
 
 const store = configureStore({
   reducer: {
-    contacts: contactsReducers,
+    contacts: persistReducer(contactsPersistConfig, contactsReducers),
   },
+  middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
+const persistor = persistStore(store);
 
-export default store;
+
+// eslint-disable-next-line
+export default {store, persistor};
 
 
 
@@ -30,7 +55,6 @@ export default store;
 // const rootReducer = combineReducers({
 //   contacts: contactsReducers,
 // });
-
 
 // const store = createStore(rootReducer, composeWithDevTools());
 

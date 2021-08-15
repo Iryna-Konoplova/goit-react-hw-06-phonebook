@@ -1,5 +1,8 @@
+// Модули
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
+
+// Компоненты
 import actions from './contacts-action'
 
 
@@ -54,10 +57,3 @@ export default combineReducers({
 //     items,
 //     filter
 // });
-
-// // const initialState = {
-// //   contacts: {
-// //     items: [],
-// //     filter: ''
-// //   }
-// // }

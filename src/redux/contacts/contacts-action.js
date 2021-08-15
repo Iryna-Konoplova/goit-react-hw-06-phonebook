@@ -1,3 +1,4 @@
+// Модули
 import shortid from 'shortid';
 import { createAction } from '@reduxjs/toolkit';
 
@@ -15,6 +16,7 @@ const deleteContact = createAction('contacts/delete');
 const changeFilter = createAction('contacts/changeFilter');
 
 
+// eslint-disable-next-line
 export default { addContact, deleteContact, changeFilter };
 
 
